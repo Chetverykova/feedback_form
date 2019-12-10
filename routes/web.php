@@ -25,4 +25,7 @@ Route::group(['middleware' => ['auth']], function(){
     });
 });
 
+Route::post('user', 'DemoController@messageUser')->name('user');
+Route::post('manager', 'DemoController@answerManager')->name('manager');
+
 Route::get('/home', 'HomeController@index')->name('home');

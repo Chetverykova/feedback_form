@@ -20,6 +20,7 @@ class CreateUserMessageTable extends Migration
             $table->longText('message');
             $table->string('email');
             $table->string('file');
+            $table->integer('answer_status');
             $table->timestamps();
         });
     }

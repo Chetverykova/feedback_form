@@ -14,34 +14,41 @@
                             <h3 class="mt-2"><i class="fas fa-envelope"></i> Write to us:</h3>
                         </div>
                         <p class="dark-grey-text">We'll write rarely, but only the best content.</p>
-                        <div class="md-form">
-                            <i class="fas fa-user prefix grey-text"></i>
-                            <input type="text" id="form-name" name="name" class="form-control">
-                            <label for="form-name">Your name</label>
-                        </div>
-                        <div class="md-form">
-                            <i class="fas fa-envelope prefix grey-text"></i>
-                            <input type="text" id="form-email" name="email" class="form-control">
-                            <label for="form-email">Your email</label>
-                        </div>
-                        <div class="md-form">
-                            <i class="fas fa-tag prefix grey-text"></i>
-                            <input type="text" id="form-Subject" name="subject" class="form-control">
-                            <label for="form-Subject">Subject</label>
-                        </div>
-                        <div class="md-form">
-                            <i class="fas fa-pencil-alt prefix grey-text"></i>
-                            <textarea id="form-text" class="form-control md-textarea" name="message" rows="3"></textarea>
-                            <label for="form-text">Send message</label>
-                        </div>
-                        <div class="md-form">
-                            <i class="fas fa-pencil-alt prefix grey-text"></i>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                            <label for="exampleFormControlFile1">Example file input</label>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+                        <form action="user" method="post">
+                            <div class="md-form">
+                                <i class="fas fa-user prefix grey-text"></i>
+                                <label for="form-name">Your name</label>
+                                <input type="text" id="form-name" name="name" class="form-control">
+                                <div>{{ $errors->first('name') }}</div>
+                            </div>
+                            <div class="md-form">
+                                <i class="fas fa-envelope prefix grey-text"></i>
+                                <label for="form-email">Your email</label>
+                                <input type="text" id="form-email" name="email" class="form-control">
+                                <div>{{ $errors->first('email') }}</div>
+                            </div>
+                            <div class="md-form">
+                                <i class="fas fa-tag prefix grey-text"></i>
+                                <label for="form-Subject">Subject</label>
+                                <input type="text" id="form-Subject" name="subject" class="form-control">
+                                <div>{{ $errors->first('subject') }}</div>
+                            </div>
+                            <div class="md-form">
+                                <i class="fas fa-pencil-alt prefix grey-text"></i>
+                                <label for="form-text">Send message</label>
+                                <textarea id="form-text" class="form-control md-textarea" name="message" rows="3"></textarea>
+                                <div>{{ $errors->first('message') }}</div>
+                            </div>
+                            <div class="md-form">
+                                <i class="fas fa-pencil-alt prefix grey-text"></i>
+                                <label for="exampleFormControlFile1">Attach your file</label>
+                                <input type="file" class="form-control-file" name="file" id="exampleFormControlFile1">
+                                <div>{{ $errors->first('file') }}</div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
