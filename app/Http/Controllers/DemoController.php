@@ -47,6 +47,9 @@ class DemoController extends Controller
 
            DB::insert("INSERT INTO user_message (name, email, subject, message, file, answer_status, created_at) values(?, ?, ?,  ?, ?, ?, ?)",
                [$name, $email,  $subject, $message, $file, 0, date("Y-m-d H:i:s")]);
+
+
+            App\Jobs\SendMessage::dispatch('TEST_MESSAGE')->delay(now()->addMinutes(10));
         }
 
        return view('upload');
@@ -62,8 +65,7 @@ class DemoController extends Controller
        if( $answered == "on"){
 
            DB::update('UPDATE user_message SET answer_status = 1 WHERE id = ?', [$id]);
-//           DB::insert("INSERT INTO user_message (answer_status,updated_at) values(?, ?) WHERE id = $id",
-//               [1, date("Y-m-d H:i:s")]);
+
        }
 
        $messages = DB::select('SELECT * FROM user_message');
